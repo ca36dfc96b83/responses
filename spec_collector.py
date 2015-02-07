@@ -4,7 +4,10 @@
 #  Author: Brendan M. 2/2015
 
 from subprocess import Popen, PIPE
-import sys
+import sys, getpass
+
+if (getpass.getuser() == 'root'):
+    sys.exit("Script must be run by an unprivileged user.")
 
 def run_cmd(command):
     sb = Popen(command,stdout=PIPE,stderr=PIPE, shell=True)
